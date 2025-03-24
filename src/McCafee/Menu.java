@@ -1,9 +1,9 @@
 package McCafee;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.*;
 
 public class Menu {
     private List<Artikel> menu;
@@ -11,7 +11,11 @@ public class Menu {
     private List<Artikel> bestellungL;
     private BonusSystem bonusSystem;
     private double gesamtbetrag = 0;
-    private int grosseGetraenkeCounter = 0; // Zähler für große Getränke
+    //private double gesamtbetragGerundet;
+    private double geldGegeben;
+    private double rückgeld;
+    Scanner sc = new Scanner(System.in);
+
 
     public Menu(int bonusFelder) {
         this.menu = loadMenu();
@@ -78,9 +82,7 @@ public class Menu {
         }
 
         System.out.println(gesamtbetrag + " € " + "Ohne Rabatt");
-        System.out.println("Bestellung: " + bestellung);
-
-        grosseGetraenkeCounter = bonusSystem.getBonusKarteFelder() / 5;
+        System.out.println("Bestellung: " + bestellung + bestellungL);
 
         // Prüfen, ob Gratis-Kaffee gewährt wird
         // Billigstes großes Getränk entfernen
@@ -93,7 +95,11 @@ public class Menu {
             }
         }
 
-        System.out.println("Gesamtbetrag nach Rabatt: " + gesamtbetrag + " €");
+        // Gesammtbetrag Runden
+        BigDecimal gesamtbetragGerundet = BigDecimal.valueOf(gesamtbetrag).setScale(2, RoundingMode.HALF_UP);
+
+        System.out.println("Gesamtbetrag nach Rabatt: " + gesamtbetragGerundet + " €");
+
     }
 
     public void showMenu() {

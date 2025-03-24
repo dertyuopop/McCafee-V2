@@ -16,12 +16,16 @@ public class BonusSystem {
         return gratisKaffe;
     }
 
+
     public int getGratisKaffe() {
         return gratisKaffe;
     }
 
     public void setBonusKarteFelder() {
         this.bonusKarteFelder = this.bonusKarteFelder + 1;
+        if (this.bonusKarteFelder == 15){
+            this.bonusKarteFelder = 0;
+        }
     }
 
     public int getBonusKarteFelder() {
