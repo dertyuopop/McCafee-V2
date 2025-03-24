@@ -2,16 +2,21 @@ package McCafee;
 
 public class BonusSystem {
     private int bonusKarteFelder;
-    private boolean gratisKaffe;
+    private int gratisKaffe;
 
     public BonusSystem(int bonusKarteFelder) {
         this.bonusKarteFelder = bonusKarteFelder;
+        this.gratisKaffe = 0;
     }
 
-    public boolean isGratisKaffe() {
+    public int isGratisKaffe() {
         if (bonusKarteFelder == 5 || bonusKarteFelder == 10 || bonusKarteFelder == 14) {
-            this.gratisKaffe = true;
+            this.gratisKaffe++;
         }
+        return gratisKaffe;
+    }
+
+    public int getGratisKaffe() {
         return gratisKaffe;
     }
 

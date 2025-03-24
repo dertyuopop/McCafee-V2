@@ -54,7 +54,8 @@ public class Menu {
                 bestellungL.add(kaffee);
                 bonusSystem.setBonusKarteFelder(); // Counter erhöhen
                 System.out.println(kaffee + " hinzugefügt.");
-                System.out.println(bonusSystem.getBonusKarteFelder());;
+                System.out.println(bonusSystem.getBonusKarteFelder());
+                bonusSystem.isGratisKaffe();
             } else {
                 bestellung.add(kaffee);
                 System.out.println(kaffee + " hinzugefügt.");
@@ -82,14 +83,16 @@ public class Menu {
         grosseGetraenkeCounter = bonusSystem.getBonusKarteFelder() / 5;
 
         // Prüfen, ob Gratis-Kaffee gewährt wird
-        for (int i = 0; i < grosseGetraenkeCounter ; i++) {
-            // Billigstes großes Getränk entfernen
-            if (bonusSystem.isGratisKaffe()) {
+        // Billigstes großes Getränk entfernen
+        if (bonusSystem.getGratisKaffe() >= 1) {
+            for (int i = 0; i < bonusSystem.getGratisKaffe(); i++) {
                 Artikel gratis = bestellungL.remove(0);
-                gesamtbetrag -= gratis.getPrice();
                 System.out.println("Gratis erhalten: " + gratis.getName() + " " + gratis.getSize());
+                System.out.println("----------------");
+                gesamtbetrag -= gratis.getPrice();
             }
         }
+
         System.out.println("Gesamtbetrag nach Rabatt: " + gesamtbetrag + " €");
     }
 
