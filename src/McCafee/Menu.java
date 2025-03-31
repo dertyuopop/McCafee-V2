@@ -98,6 +98,7 @@ public class Menu {
         // Gesammtbetrag Runden
         BigDecimal gesamtbetragGerundet = BigDecimal.valueOf(gesamtbetrag).setScale(2, RoundingMode.HALF_UP);
 
+        //Gesammtbetrag ausgeben
         System.out.println("Gesamtbetrag nach Rabatt: " + gesamtbetragGerundet + " €");
 
     }
