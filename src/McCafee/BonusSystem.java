@@ -23,7 +23,7 @@ public class BonusSystem {
 
     public void setBonusKarteFelder() {
         this.bonusKarteFelder = this.bonusKarteFelder + 1;
-        if (this.bonusKarteFelder == 15){
+        if (this.bonusKarteFelder == 15) {
             this.bonusKarteFelder = 0;
         }
     }

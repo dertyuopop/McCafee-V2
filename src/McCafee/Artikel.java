@@ -1,9 +1,9 @@
 package McCafee;
 
 public class Artikel {
-    private String name;
-    private String size;
-    private double price;
+    private final String name;
+    private final String size;
+    private final double price;
 
     // Constructor
     public Artikel(String name, String size, double price) {
@@ -13,9 +13,17 @@ public class Artikel {
     }
 
     // Get Methoden
-    public String getName() { return name; }
-    public String getSize() { return size; }
-    public double getPrice() { return price; }
+    public String getName() {
+        return name;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public double getPrice() {
+        return price;
+    }
 
     //Überprüfe ob relevant für Stempelkarte
     public boolean istStempelrelevant() {

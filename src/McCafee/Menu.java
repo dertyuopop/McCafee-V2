@@ -2,19 +2,21 @@ package McCafee;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 public class Menu {
-    private List<Artikel> menu;
-    private List<Artikel> bestellung;
-    private List<Artikel> bestellungL;
-    private BonusSystem bonusSystem;
+    Scanner sc = new Scanner(System.in);
+    private final List<Artikel> menu;
+    private final List<Artikel> bestellung;
+    private final List<Artikel> bestellungL;
+    private final BonusSystem bonusSystem;
     private double gesamtbetrag = 0;
     //private double gesamtbetragGerundet;
     private double geldGegeben;
     private double rückgeld;
-    Scanner sc = new Scanner(System.in);
 
 
     public Menu(int bonusFelder) {
@@ -105,7 +107,7 @@ public class Menu {
 
     public void showMenu() {
         for (int i = 0; i < menu.size(); i++) {
-            System.out.println(i + ": " + menu.get(i));
+            System.out.println("[NOLOG]"+ i + ": " + menu.get(i));
         }
     }
 }
