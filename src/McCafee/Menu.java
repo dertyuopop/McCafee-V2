@@ -14,7 +14,6 @@ public class Menu {
     private final List<Artikel> bestellungL;
     private final BonusSystem bonusSystem;
     private double gesamtbetrag = 0;
-    //private double gesamtbetragGerundet;
     private double geldGegeben;
     private double rückgeld;
 
@@ -83,10 +82,6 @@ public class Menu {
             gesamtbetrag += kaffee.getPrice();
         }
 
-        for (int i = 0; i < 100; i++) {
-            System.out.println(" ");
-        }
-
         System.out.println("Bestellete Artikeln ");
         for (int i = 0; i < bestellung.size(); i++) {
             System.out.println(bestellung.get(i).getName() + " " + bestellung.get(i).getSize() + "\t" + bestellung.get(i).getPrice());
@@ -94,7 +89,6 @@ public class Menu {
         for (int i = 0; i < bestellungL.size(); i++) {
             System.out.println(bestellungL.get(i).getName() + " " + bestellungL.get(i).getSize() + "\t" + bestellungL.get(i).getPrice());
         }
-        //System.out.println("Bestellung: " + bestellung + bestellungL);
 
         // Prüfen, ob Gratis-Kaffee gewährt wird
         // Billigstes großes Getränk entfernen
@@ -115,10 +109,39 @@ public class Menu {
         //Gesammtbetrag ausgeben
         System.out.println("Zu zahlen " + gesamtbetragGerundet + " €");
         System.out.println("----------------");
+        System.out.println("");
 
-//        System.out.println();
-//        geldGegeben = sc.nextDouble();
+        System.out.println("Einkassierte Geldsumme");
+        geldGegeben = sc.nextDouble();
 
+        rückgeld = gesamtbetrag - geldGegeben;
+
+        System.out.println("Rückgeld: " + rückgeld);
+        System.out.println("----------------");
+
+        Kassenzettel();
+    }
+
+    public void Kassenzettel(){
+        BigDecimal gesamtbetragGerundet = BigDecimal.valueOf(gesamtbetrag).setScale(2, RoundingMode.HALF_UP);
+        BigDecimal rückgeldGerundet = BigDecimal.valueOf(rückgeld).setScale(2, RoundingMode.HALF_UP);
+        for (int i = 0; i < 100; i++) {
+            System.out.println(" ");
+        }
+
+        System.out.println("Bestellete Artikeln ");
+        for (int i = 0; i < bestellung.size(); i++) {
+            System.out.println(bestellung.get(i).getName() + " " + bestellung.get(i).getSize() + "\t" + bestellung.get(i).getPrice());
+        }
+        for (int i = 0; i < bestellungL.size(); i++) {
+            System.out.println(bestellungL.get(i).getName() + " " + bestellungL.get(i).getSize() + "\t" + bestellungL.get(i).getPrice());
+        }
+        System.out.println("----------------");
+        System.out.println("Gesamtbetrag " + gesamtbetragGerundet + " €");
+        System.out.println("----------------");
+        System.out.println("Bar " + geldGegeben);
+        System.out.println("Rückgeld " + rückgeldGerundet);
+        System.out.println("----------------");
     }
 
     public void showMenu() {
