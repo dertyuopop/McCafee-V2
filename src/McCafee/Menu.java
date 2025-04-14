@@ -130,6 +130,7 @@ public class Menu {
         }
 
         System.out.println("Bestellete Artikeln ");
+        System.out.println(" ");
         for (int i = 0; i < bestellung.size(); i++) {
             System.out.println(bestellung.get(i).getName() + " " + bestellung.get(i).getSize() + "\t" + bestellung.get(i).getPrice());
         }
