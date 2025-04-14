@@ -83,8 +83,18 @@ public class Menu {
             gesamtbetrag += kaffee.getPrice();
         }
 
-        System.out.println(gesamtbetrag + " € " + "Ohne Rabatt");
-        System.out.println("Bestellung: " + bestellung + bestellungL);
+        for (int i = 0; i < 100; i++) {
+            System.out.println(" ");
+        }
+
+        System.out.println("Bestellete Artikeln ");
+        for (int i = 0; i < bestellung.size(); i++) {
+            System.out.println(bestellung.get(i).getName() + " " + bestellung.get(i).getSize() + "\t" + bestellung.get(i).getPrice());
+        }
+        for (int i = 0; i < bestellungL.size(); i++) {
+            System.out.println(bestellungL.get(i).getName() + " " + bestellungL.get(i).getSize() + "\t" + bestellungL.get(i).getPrice());
+        }
+        //System.out.println("Bestellung: " + bestellung + bestellungL);
 
         // Prüfen, ob Gratis-Kaffee gewährt wird
         // Billigstes großes Getränk entfernen
@@ -95,13 +105,19 @@ public class Menu {
                 System.out.println("----------------");
                 gesamtbetrag -= gratis.getPrice();
             }
+        } else {
+            System.out.println("----------------");
         }
 
         // Gesammtbetrag Runden
         BigDecimal gesamtbetragGerundet = BigDecimal.valueOf(gesamtbetrag).setScale(2, RoundingMode.HALF_UP);
 
         //Gesammtbetrag ausgeben
-        System.out.println("Gesamtbetrag nach Rabatt: " + gesamtbetragGerundet + " €");
+        System.out.println("Zu zahlen " + gesamtbetragGerundet + " €");
+        System.out.println("----------------");
+
+//        System.out.println();
+//        geldGegeben = sc.nextDouble();
 
     }
 
