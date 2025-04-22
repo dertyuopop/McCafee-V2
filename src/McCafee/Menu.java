@@ -83,10 +83,8 @@ public class Menu {
             gesamtbetrag += kaffee.getPrice();
         }
 
-        BigDecimal gesamtbetragGerundetVorBonus = BigDecimal.valueOf(gesamtbetrag).setScale(2,RoundingMode.HALF_UP);
-        System.out.println(gesamtbetragGerundetVorBonus + " € " + "Ohne Rabatt");
+        System.out.println(gesamtbetrag + " € " + "Ohne Rabatt");
         System.out.println("Bestellung: " + bestellung + bestellungL);
-        System.out.println("__________________________________________");
 
         // Prüfen, ob Gratis-Kaffee gewährt wird
         // Billigstes großes Getränk entfernen
@@ -101,6 +99,7 @@ public class Menu {
 
         // Gesammtbetrag Runden
         BigDecimal gesamtbetragGerundet = BigDecimal.valueOf(gesamtbetrag).setScale(2, RoundingMode.HALF_UP);
+
         //Gesammtbetrag ausgeben
         System.out.println("Gesamtbetrag nach Rabatt: " + gesamtbetragGerundet + " €");
 
