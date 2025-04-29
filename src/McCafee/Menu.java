@@ -10,7 +10,8 @@ import java.util.Scanner;
 public class Menu {
     Scanner sc = new Scanner(System.in);
     private final List<Artikel> menu;
-    private final List<Artikel> bestellung;
+    private final List<Artikel> bestellungAll;
+    private final List<Artikel> bestellungSM;
     private final List<Artikel> bestellungL;
     private final BonusSystem bonusSystem;
     private double gesamtbetrag = 0;
@@ -20,13 +21,14 @@ public class Menu {
 
     public Menu(int bonusFelder) {
         this.menu = loadMenu();
-        this.bestellung = new ArrayList<>();
+        this.bestellungSM = new ArrayList<>();
         this.bestellungL = new ArrayList<>();
+        this.bestellungAll = new ArrayList<>();
         bonusSystem = new BonusSystem(bonusFelder);
     }
 
     public List<Artikel> getBestellung() {
-        return bestellung;
+        return bestellungAll;
     }
 
     // Statische Kaffee-Liste
@@ -55,6 +57,7 @@ public class Menu {
     public void addKaffee(int index) {
         if (index >= 0 && index < menu.size()) {
             Artikel kaffee = menu.get(index);
+            bestellungAll.add(kaffee);
             if (kaffee.getSize().equals("groß")) { // Korrektur: richtige Eigenschaft geprüft
                 bestellungL.add(kaffee);
                 bonusSystem.setBonusKarteFelder(); // Counter erhöhen
@@ -62,7 +65,7 @@ public class Menu {
                 System.out.println(bonusSystem.getBonusKarteFelder());
                 bonusSystem.isGratisKaffe();
             } else {
-                bestellung.add(kaffee);
+                bestellungSM.add(kaffee);
                 System.out.println(kaffee + " hinzugefügt.");
             }
         } else {
@@ -75,7 +78,7 @@ public class Menu {
         gesamtbetrag = 0; // Zurücksetzen des Gesamtbetrags
 
         // Summe berechnen
-        for (Artikel kaffee : bestellung) {
+        for (Artikel kaffee : bestellungSM) {
             gesamtbetrag += kaffee.getPrice();
         }
         for (Artikel kaffee : bestellungL) {
@@ -83,7 +86,7 @@ public class Menu {
         }
 
         System.out.println(gesamtbetrag + " € " + "Ohne Rabatt");
-        System.out.println("Bestellung: " + bestellung + bestellungL);
+        System.out.println("Bestellung: " + bestellungSM + bestellungL);
 
         // Prüfen, ob Gratis-Kaffee gewährt wird
         // Billigstes großes Getränk entfernen
@@ -127,8 +130,8 @@ public class Menu {
 
         System.out.println("Bestellete Artikeln ");
         System.out.println(" ");
-        for (int i = 0; i < bestellung.size(); i++) {
-            System.out.println(bestellung.get(i).getName() + " " + bestellung.get(i).getSize() + "\t" + bestellung.get(i).getPrice());
+        for (int i = 0; i < bestellungSM.size(); i++) {
+            System.out.println(bestellungSM.get(i).getName() + " " + bestellungSM.get(i).getSize() + "\t" + bestellungSM.get(i).getPrice());
         }
         for (int i = 0; i < bestellungL.size(); i++) {
             System.out.println(bestellungL.get(i).getName() + " " + bestellungL.get(i).getSize() + "\t" + bestellungL.get(i).getPrice());
