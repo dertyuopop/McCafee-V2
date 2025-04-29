@@ -48,6 +48,15 @@ public class Main {
                 bestellung.addKaffee(wahl);
             }
             bestellung.rechnung();
+
+            System.out.println("Weitere Bestelleung aufnehmen Y/N");
+            if (!(Objects.equals(sc.next(), "Y"))){
+                eingeloggt = false;
+                } else {
+                for (int i = 0; i < 100; i++) {
+                    System.out.println(" ");
+                }
+            }
         }
     }
 }
