@@ -96,6 +96,7 @@ public class Menu {
                 System.out.println("Gratis erhalten: " + gratis.getName() + " " + gratis.getSize());
                 System.out.println("----------------");
                 gesamtbetrag -= gratis.getPrice();
+                Log.info("Zahlbetrag vor Abzug " + gesamtbetrag + "\n");
             }
         } else {
             System.out.println("----------------");
@@ -108,6 +109,7 @@ public class Menu {
         System.out.println("Zu zahlen " + gesamtbetragGerundet + " €");
         System.out.println("----------------");
         System.out.println("");
+        Log.info("Zahlbetrag mit Abzug: " + gesamtbetragGerundet + "\n");
 
         System.out.println("Einkassierte Geldsumme");
         geldGegeben = sc.nextDouble();
@@ -146,7 +148,7 @@ public class Menu {
 
     public void showMenu() {
         for (int i = 0; i < menu.size(); i++) {
-            System.out.println("[NOLOG]"+ i + ": " + menu.get(i));
+            System.out.println(i + ": " + menu.get(i));
         }
     }
 }
