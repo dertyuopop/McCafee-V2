@@ -50,6 +50,7 @@ public class Main {
                 eingeloggt = false;
                 System.out.println("MitarbeiterNr oder Passwort ist falsch");
                 Log.warning("Mitarbeiter Nr: " + tempMNR + "Login fehlgeschlagen");
+
             }
         }
 

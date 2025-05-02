@@ -16,7 +16,7 @@ public class Menu {
     private final BonusSystem bonusSystem;
     private double gesamtbetrag = 0;
     private double geldGegeben;
-    private double rückgeld;
+    private double rueckgeld;
 
 
     public Menu(int bonusFelder) {
@@ -85,6 +85,10 @@ public class Menu {
             gesamtbetrag += kaffee.getPrice();
         }
 
+        for(int k = 0; k<5; k++){
+            System.out.println("");
+        }
+
         System.out.println(gesamtbetrag + " € " + "Ohne Rabatt");
         System.out.println("Bestellung: " + bestellungSM + bestellungL);
 
@@ -111,12 +115,12 @@ public class Menu {
         System.out.println("");
         Log.info("Zahlbetrag mit Abzug: " + gesamtbetragGerundet + "\n");
 
-        System.out.println("Einkassierte Geldsumme");
+        System.out.print("Einkassierte Geldsumme:");
         geldGegeben = sc.nextDouble();
 
-        rückgeld = gesamtbetrag - geldGegeben;
+        rueckgeld = gesamtbetrag - geldGegeben;
 
-        System.out.println("Rückgeld: " + rückgeld);
+        System.out.println("Rückgeld: " + rueckgeld);
         System.out.println("----------------");
 
         Kassenzettel();
@@ -125,12 +129,12 @@ public class Menu {
 
     public void Kassenzettel(){
         BigDecimal gesamtbetragGerundet = BigDecimal.valueOf(gesamtbetrag).setScale(2, RoundingMode.HALF_UP);
-        BigDecimal rückgeldGerundet = BigDecimal.valueOf(rückgeld).setScale(2, RoundingMode.HALF_UP);
+        BigDecimal rückgeldGerundet = BigDecimal.valueOf(rueckgeld).setScale(2, RoundingMode.HALF_UP);
         for (int i = 0; i < 100; i++) {
             System.out.println(" ");
         }
 
-        System.out.println("Bestellete Artikeln ");
+        System.out.println("Bestellete Artikel");
         System.out.println(" ");
         for (int i = 0; i < bestellungSM.size(); i++) {
             System.out.println(bestellungSM.get(i).getName() + " " + bestellungSM.get(i).getSize() + "\t" + bestellungSM.get(i).getPrice());
